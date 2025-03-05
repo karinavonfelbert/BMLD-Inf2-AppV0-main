@@ -12,7 +12,7 @@ Diese App wurde von folgenden Personen entwickelt:
 - Karina von Felbert (vonfekar@students.zhaw.ch)
 """
 
-🔬 Präzise Verdünnungen für exakte Laborergebnisse
+Präzise Verdünnungen für exakte Laborergebnisse
 Dieser Verdünnungsrechner hilft Ihnen, schnell und zuverlässig die benötigten Volumina für Ihre Lösungen zu berechnen. Vermeiden Sie Rechenfehler und stellen Sie sicher, dass Ihre Verdünnungen stets den gewünschten Konzentrationen entsprechen.
 
 
