@@ -40,3 +40,45 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
+import streamlit as st
+
+# CSS zur Anpassung der Eingabefelder und des Buttons
+st.markdown("""
+    <style>
+    /* Hintergrundfarbe der Eingabefelder */
+    input[type="text"], input[type="number"], textarea, select {
+        background-color: white !important;
+        color: black !important;
+        border-radius: 5px !important;
+        border: 1px solid black !important;
+    }
+
+    /* Hintergrundfarbe und Textfarbe des Buttons */
+    button {
+        background-color: white !important;
+        color: black !important;
+        border-radius: 5px !important;
+        border: 1px solid black !important;
+    }
+
+    /* Spezifisch für Streamlit-Buttons */
+    .stButton>button {
+        background-color: white !important;
+        color: black !important;
+        border-radius: 5px !important;
+        border: 1px solid black !important;
+        font-weight: bold !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Beispiel für UI-Elemente
+st.title("Verdünnungsrechner")
+st.subheader("Hier finden Sie den Verdünnungsrechner.")
+
+eingangskonzentration = st.number_input("Eingangskonzentration (c1) in mol/L", value=0.00)
+eingangsvolumen = st.number_input("Eingangsvolumen (v1) in L", value=0.00)
+zielkonzentration = st.number_input("Zielkonzentration (c2) in mol/L", value=0.00)
+
+st.button("Berechnen")
+
