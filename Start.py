@@ -39,7 +39,7 @@ st.markdown("""
 
 import streamlit as st
 
-logo_path = "logo.png"  # Pfad zum Logo
+logo_path = "Logo Verdünnungsrechner.png"  # Pfad zum Logo
 
 # HTML-Code für das Logo
 logo_html = f"""
