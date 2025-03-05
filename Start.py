@@ -15,3 +15,19 @@ Diese App wurde von folgenden Personen entwickelt:
 - Elena Stevanovic (stevaele@students.zhaw.ch)
 - Karina von Felbert (vonfekar@students.zhaw.ch)
 """
+import streamlit as st
+
+st.markdown(
+    """
+    <style>
+        body {
+            background-color: #90EE90;
+            color: #000000;
+        }
+        .stApp {
+            background-color: #F0F0F0;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)

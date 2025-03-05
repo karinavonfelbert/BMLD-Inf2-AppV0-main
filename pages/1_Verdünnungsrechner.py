@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("1_Verdünnungsrechner")
+st.title("Verdünnungsrechner")
 st.subheader("Hier finden Sie den Verdünnungsrechner.")
 
 # Eingabe der Konzentrationen und Volumina
