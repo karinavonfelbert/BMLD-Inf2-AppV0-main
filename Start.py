@@ -31,16 +31,3 @@ st.markdown(
 )
 import streamlit as st
 
-# CSS zur Änderung der Schriftfarbe auf Schwarz
-st.markdown("""
-    <style>
-    body, .stText, .stMarkdown {
-        color: black !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-st.title("Verdünnungsrechner")
-st.write("Der Verdünnungsrechner ist eine benutzerfreundliche Webanwendung ...")
-
-print("test")
