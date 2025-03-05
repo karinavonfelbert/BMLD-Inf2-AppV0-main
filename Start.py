@@ -7,7 +7,7 @@ st.title("Verdünnungsrechner")
 
 st.write(
     """
-    **Der Verdünnungsrechner ist eine benutzerfreundliche Webanwendung, die entwickelt wurde, um Laborpersonal, Studierenden und Forschenden bei der Berechnung von Verdünnungen zu unterstützen. Mithilfe dieser App können Benutzer schnell das benötigte Volumen einer Stamm- oder Endlösung berechnen, um eine gewünschte Verdünnung zu erhalten.
+    Der Verdünnungsrechner ist eine benutzerfreundliche Webanwendung, die entwickelt wurde, um Laborpersonal, Studierenden und Forschenden bei der Berechnung von Verdünnungen zu unterstützen. Mithilfe dieser App können Benutzer schnell das benötigte Volumen einer Stamm- oder Endlösung berechnen, um eine gewünschte Verdünnung zu erhalten.
     """
 )
 """
