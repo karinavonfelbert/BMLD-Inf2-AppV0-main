@@ -17,17 +17,16 @@ Diese App wurde von folgenden Personen entwickelt:
 """
 import streamlit as st
 
+import streamlit as st
+
 st.markdown(
     """
     <style>
-        body {
-            background-color: #000000;
-            color: #90EE90;
-        }
-        .stApp {
-            background-color: #90EE90;
+        body, .stApp {
+            background: linear-gradient(to bottom, #C6DE9B, #F9F9F9); 
         }
     </style>
     """,
     unsafe_allow_html=True
 )
+
