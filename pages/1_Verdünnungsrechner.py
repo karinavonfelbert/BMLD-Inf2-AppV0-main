@@ -16,7 +16,7 @@ if st.button("Berechnen"):
     else:
         st.error("Bitte geben Sie gültige Werte ein. c2 muss kleiner als c1 sein.")
 
-import streamlit as st
 
-# Logo in Streamlit anzeigen
-st.image("Logo Verdünnungsrechner.png", width=200)
+
+import os
+st.image(os.path.join(os.path.dirname(__file__), "Logo Verdünnungsrechner.png"), width=200)
