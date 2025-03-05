@@ -28,6 +28,17 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.markdown("""
+    <style>
+        h1, h2, h3, h4, h5, h6, p, div {
+            color: black !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
+st.title("Mein Titel")
+st.subheader("Mein Subheader")
+st.write("Normaler Text")
 
 
 
