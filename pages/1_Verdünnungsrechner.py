@@ -15,3 +15,14 @@ if st.button("Berechnen"):
         st.success(f"Das benötigte Endvolumen (v2) ist: {v2:.3f} L")
     else:
         st.error("Bitte geben Sie gültige Werte ein. c2 muss kleiner als c1 sein.")
+
+st.markdown(
+    """
+    <style>
+        body, .stApp {
+            background: linear-gradient(to bottom, #C6DE9B, #F9F9F9); 
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
