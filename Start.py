@@ -22,25 +22,26 @@ Diese App wurde von folgenden Personen entwickelt:
 
 import streamlit as st
 
-# Sidebar für Navigation
+import streamlit as st
+
+# Navigation nur in der Sidebar
 st.sidebar.title("Navigation")
 seite = st.sidebar.radio("Wähle eine Seite", ["Start", "Unterseite A", "Unterseite B"])
 
 # Inhalte der Seiten
 if seite == "Start":
-    st.write("Dies ist die Hauptseite.")
 
 elif seite == "Unterseite A":
-    st.title("Unterseite A - Verdünnungsrechner")
+    st.title("Verdünnungsrechner")
     st.write("Hier kannst du deine Verdünnung berechnen.")
 
-    # 📌 Hier kommt dein Code für den Verdünnungsrechner rein:
+    # 📌 Verdünnungsrechner-Code
     def berechne_verdünnung(c1, v1, c2):
         v2 = (c1 * v1) / c2  # Endvolumen
         v_verdünnungsmittel = v2 - v1  # Menge des Verdünnungsmittels
         return v2, v_verdünnungsmittel
 
-    # Eingabefelder
+    # Eingabefelder für den Rechner
     c1 = st.number_input("Konzentration der Stammlösung (C1) [mol/L]", min_value=0.0, format="%.6f")
     v1 = st.number_input("Volumen der Stammlösung (V1) [mL]", min_value=0.0, format="%.3f")
     c2 = st.number_input("Gewünschte Endkonzentration (C2) [mol/L]", min_value=0.0, format="%.6f")
@@ -55,4 +56,4 @@ elif seite == "Unterseite A":
 
 elif seite == "Unterseite B":
     st.title("Unterseite B")
-    st.write("Hier könnte ein anderer Rechner oder eine andere Funktion sein.")
+    st.write("Hier könnte eine andere Berechnung oder ein weiteres Tool stehen.")
