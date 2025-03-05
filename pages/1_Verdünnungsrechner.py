@@ -10,7 +10,7 @@ st.markdown(
 st.latex(r"c_1 \cdot V_1 = c_2 \cdot V_2")
 st.markdown(
     """
-    Wobei das Endvolumen \(V_2\) durch Umstellen der Formel bestimmt wird als:
+    Wobei das Endvolumen \(V2\) durch Umstellen der Formel bestimmt wird als:
     """
 )
 st.latex(r"V_2 = \frac{c_1 \cdot V_1}{c_2}")
@@ -20,18 +20,21 @@ st.markdown(
     """
 )
 st.latex(r"V_D = V_2 - V_1")
+
 st.subheader("Hier finden Sie den Verdünnungsrechner.")
 
-c1 = st.number_input("Eingangskonzentration (c1) in mol/L", min_value=0.0, step=0.1)
-v1 = st.number_input("Eingangsvolumen (v1) in L", min_value=0.0, step=0.1)
-c2 = st.number_input("Zielkonzentration (c2) in mol/L", min_value=0.0, step=0.1)
+with st.form("verdünnung_formular"):
+    c1 = st.number_input("Eingangskonzentration (c₁) in mol/L", min_value=0.0, step=0.1)
+    v1 = st.number_input("Eingangsvolumen (V₁) in L", min_value=0.0, step=0.1)
+    c2 = st.number_input("Zielkonzentration (c₂) in mol/L", min_value=0.0, step=0.1)
+    berechnen = st.form_submit_button("Berechnen")
 
-if st.button("Berechnen"):
+if berechnen:
     if c1 > 0 and v1 > 0 and c2 > 0 and c2 < c1:
         v2 = (c1 * v1) / c2  # Berechnung des Zielvolumens
-        st.success(f"Das benötigte Endvolumen (v2) ist: {v2:.3f} L")
+        st.success(f"Das benötigte Endvolumen (V₂) ist: {v2:.3f} L")
     else:
-        st.error("Bitte geben Sie gültige Werte ein. c2 muss kleiner als c1 sein.")
+        st.error("Bitte geben Sie gültige Werte ein. c₂ muss kleiner als c₁ sein.")
 
 import pandas as pd
 
