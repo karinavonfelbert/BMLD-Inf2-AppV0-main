@@ -36,3 +36,34 @@ st.markdown("""
         }
     </style>
     """, unsafe_allow_html=True)
+
+
+st.markdown("""
+    <style>
+    /* Hintergrundfarbe der Eingabefelder */
+    input[type="text"], input[type="number"], textarea, select {
+        background-color: white !important;
+        color: black !important;
+        border-radius: 5px !important;
+        border: 1px solid black !important;
+    }
+
+    /* Hintergrundfarbe und Textfarbe des Buttons */
+    button {
+        background-color: white !important;
+        color: black !important;
+        border-radius: 5px !important;
+        border: 1px solid black !important;
+    }
+
+    /* Spezifisch für Streamlit-Buttons */
+    .stButton>button {
+        background-color: white !important;
+        color: black !important;
+        border-radius: 5px !important;
+        border: 1px solid black !important;
+        font-weight: bold !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
