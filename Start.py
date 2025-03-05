@@ -16,16 +16,18 @@ Diese App wurde von folgenden Personen entwickelt:
 - Karina von Felbert (vonfekar@students.zhaw.ch)
 """
 import streamlit as st
+
 st.markdown(
     """
     <style>
-    * {
-        color: black !important;
-    }
+        body, .stApp {
+            background: radial-gradient(circle, #C6DE9B, #F9F9F9);
+        }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 
 
