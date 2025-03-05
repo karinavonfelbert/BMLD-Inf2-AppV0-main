@@ -26,3 +26,20 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+import streamlit as st
+
+# CSS zur Änderung der Schriftfarbe auf Schwarz
+st.markdown("""
+    <style>
+    h1, h2, h3, h4, h5, h6 {
+        color: black !important;
+    }
+    p, div, span, .stText, .stMarkdown {
+        color: black !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+st.title("Verdünnungsrechner")  # H1
+st.subheader("Noch ein Untertitel")  # H3
+st.write("Dies ist ein normaler Text in Streamlit.")  # Standardtext
