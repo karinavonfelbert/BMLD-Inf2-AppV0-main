@@ -34,7 +34,4 @@ if st.button("Berechnen"):
         st.info(f"Benötigtes Volumen des Verdünnungsmittels: {v_verdünnungsmittel:.3f} mL")
     else:
         st.error("Bitte gültige Werte eingeben. C2 muss kleiner als C1 sein.")
-        
 
-
-"""
