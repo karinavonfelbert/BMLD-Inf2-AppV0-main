@@ -29,6 +29,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-[theme]
-textColor = "#000000"  # Schwarz
