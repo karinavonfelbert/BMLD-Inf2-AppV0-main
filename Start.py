@@ -31,3 +31,11 @@ st.markdown(
 )
 import streamlit as st
 
+st.markdown("""
+    <style>
+    body, .stText, .stMarkdown {
+        color: black !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
