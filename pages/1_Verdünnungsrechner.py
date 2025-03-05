@@ -40,6 +40,3 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("Verdünnungsrechner")  # H1
-st.subheader("Noch ein Untertitel")  # H3
-st.write("Dies ist ein normaler Text in Streamlit.")  # Standardtext
