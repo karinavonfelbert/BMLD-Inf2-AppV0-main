@@ -36,9 +36,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("Mein Titel")
-st.subheader("Mein Subheader")
-st.write("Normaler Text")
 
 
 

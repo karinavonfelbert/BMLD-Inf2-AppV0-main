@@ -15,3 +15,24 @@ if st.button("Berechnen"):
         st.success(f"Das benötigte Endvolumen (v2) ist: {v2:.3f} L")
     else:
         st.error("Bitte geben Sie gültige Werte ein. c2 muss kleiner als c1 sein.")
+
+import streamlit as st
+
+st.markdown(
+    """
+    <style>
+        body, .stApp {
+            background: radial-gradient(circle, #C6DE9B, #F9F9F9);
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown("""
+    <style>
+        h1, h2, h3, h4, h5, h6, p, div {
+            color: black !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
