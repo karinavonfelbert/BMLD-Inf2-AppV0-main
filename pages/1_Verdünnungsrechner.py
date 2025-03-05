@@ -15,3 +15,8 @@ if st.button("Berechnen"):
         st.success(f"Das benötigte Endvolumen (v2) ist: {v2:.3f} L")
     else:
         st.error("Bitte geben Sie gültige Werte ein. c2 muss kleiner als c1 sein.")
+
+import streamlit as st
+
+# Logo in Streamlit anzeigen
+st.image("Logo Verdünnungsrechner.png", width=200)
