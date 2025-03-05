@@ -37,7 +37,19 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 
-st.sidebar.image("logo.png", use_column_width=True)
+import streamlit as st
+
+logo_path = "logo.png"  # Pfad zum Logo
+
+# HTML-Code für das Logo
+logo_html = f"""
+    <div style="display: flex; justify-content: center;">
+        <img src="data:image/png;base64,{st.image(logo_path)}" width="150">
+    </div>
+"""
+
+st.sidebar.markdown(logo_html, unsafe_allow_html=True)
+
 
 
 
