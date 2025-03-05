@@ -10,3 +10,4 @@ st.title("Meine erste Streamlit App")
 Diese App wurde von folgenden Personen entwickelt:
 - Elena Stevanovic (stevaele@students.zhaw.ch)
 - Karina von Felbert (vonfekar@students.zhaw.ch)
+"""
