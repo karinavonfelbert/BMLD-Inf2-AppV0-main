@@ -2,7 +2,7 @@ import streamlit as st
 
 st.title("1_Verdünnungsrechner")
 
-st.write("Hier finden Sie den Verdünnungsrechner.")
+st.subheader("Hier finden Sie den Verdünnungsrechner.")
 
 # Eingabe der Konzentrationen und Volumina
 c1 = st.number_input("Eingangskonzentration (c1) in mol/L", min_value=0.0, step=0.1)
