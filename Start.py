@@ -5,19 +5,18 @@ st.title("Verdünnungsrechner")
 
 # !! WICHTIG: Eure Emails müssen in der App erscheinen!!
 
-# Streamlit über den Text unten direkt in die App - cool!
+st.write(
+    """
+    **Der Verdünnungsrechner ist eine benutzerfreundliche Webanwendung, die entwickelt wurde, um Laborpersonal, Studierenden und Forschenden bei der Berechnung von Verdünnungen zu unterstützen. Mithilfe dieser App können Benutzer schnell das benötigte Volumen einer Stamm- oder Endlösung berechnen, um eine gewünschte Verdünnung zu erhalten.
+    ""
+)
 """
 Diese App wurde von folgenden Personen entwickelt:
 - Elena Stevanovic (stevaele@students.zhaw.ch)
 - Karina von Felbert (vonfekar@students.zhaw.ch)
 """
 
-st.write(
-    """
-    **Präzise Verdünnungen für exakte Laborergebnisse**
-    Berechnen Sie schnell und zuverlässig die benötigten Volumina für Ihre Lösungen.
-    """
-)
+
 
 
 
@@ -29,7 +28,6 @@ seite = st.sidebar.radio("Wähle eine Seite", ["Start", "Unterseite A", "Unterse
 
 # Inhalte der Seiten
 if seite == "Start":
-    st.title("Willkommen auf der Startseite")
     st.write("Dies ist die Hauptseite.")
 
 elif seite == "Unterseite A":
