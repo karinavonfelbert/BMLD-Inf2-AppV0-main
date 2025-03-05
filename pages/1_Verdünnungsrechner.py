@@ -72,13 +72,4 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Beispiel für UI-Elemente
-st.title("Verdünnungsrechner")
-st.subheader("Hier finden Sie den Verdünnungsrechner.")
-
-eingangskonzentration = st.number_input("Eingangskonzentration (c1) in mol/L", value=0.00)
-eingangsvolumen = st.number_input("Eingangsvolumen (v1) in L", value=0.00)
-zielkonzentration = st.number_input("Zielkonzentration (c2) in mol/L", value=0.00)
-
-st.button("Berechnen")
 
