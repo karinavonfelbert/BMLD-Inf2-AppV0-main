@@ -50,6 +50,11 @@ logo_html = f"""
 
 st.sidebar.markdown(logo_html, unsafe_allow_html=True)
 
+import streamlit as st
+
+# Logo in der Seitenleiste laden
+st.sidebar.image("logo.png", use_column_width=True)
+
 
 
 
