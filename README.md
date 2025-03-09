@@ -10,4 +10,4 @@ Karina von Felbert (vonfekar@students.zhaw.ch)
 Local URL: http://localhost:8501
 Network URL: http://192.168.0.178:8501
 
-
+Streamlit Link: https://elenakarinagoet.streamlit.app
