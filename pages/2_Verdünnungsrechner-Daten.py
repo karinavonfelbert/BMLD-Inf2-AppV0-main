@@ -2,19 +2,10 @@ import streamlit as st
 
 st.title("Daten des Verdünnungsrechner")
 
-if 'data_df' not in st.session_state or st.session_state['data_df'].empty:
-    st.info('Keine Daten vorhanden. Berechnen Sie Ihre Verdünnung im Verdünnungsrechner.')
+data_df = st.session_state['data_df']
+if data_df.empty:
+    st.info('Keine Verdünnungswerte vorhanden. Berechnen Sie Ihre Verdünnungen auf der Startseite.')
     st.stop()
 
-data_df = st.session_state['data_df']
-
 data_df = data_df.sort_values('timestamp', ascending=False)
-
 st.dataframe(data_df)
-
-if st.button("Zurück zur Startseite"):
-    st.switch_page("Start.py")
-if st.button("Zum Verdünnungsrechner"):
-    st.switch_page("pages/1_Verdünnungsrechner.py")
-if st.button("Zur Verdünnungsrechner-Grafik"):
-    st.switch_page("pages/3_Verdünnungsrechner-Grafik.py")
