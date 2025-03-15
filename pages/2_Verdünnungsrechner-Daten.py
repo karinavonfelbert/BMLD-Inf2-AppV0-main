@@ -1,5 +1,11 @@
 import streamlit as st
 
+# ====== Start Login Block ======
+from utils.login_manager import LoginManager
+LoginManager().go_to_login('Start.py') 
+# ====== End Login Block ======
+
+
 st.title("Daten des Verdünnungsrechner")
 
 if 'data_df' not in st.session_state or st.session_state['data_df'].empty:
