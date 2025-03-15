@@ -28,7 +28,7 @@ with st.form("verdünnung_formular"):
     c1 = st.number_input("Eingangskonzentration (c₁) in mol/L", min_value=0.0, step=0.1)
     v1 = st.number_input("Eingangsvolumen (V₁) in L", min_value=0.0, step=0.1)
     c2 = st.number_input("Zielkonzentration (c₂) in mol/L", min_value=0.0, step=0.1)
-    berechnen = st.form_submit_button("Berechnen")
+    berechnen = st.button("Berechnen")
 
 if berechnen:
     if c1 > 0 and v1 > 0 and c2 > 0 and c2 < c1:
@@ -37,7 +37,7 @@ if berechnen:
     else:
         st.error("Bitte geben Sie gültige Werte ein. c₂ muss kleiner als c₁ sein.")
 
-submitted = st.button("Berechnen")
+submitted = berechnen 
 
 def calculate_dilution(c1, v1, c2):
     if c1 > 0 and v1 > 0 and c2 > 0 and c2 < c1:
