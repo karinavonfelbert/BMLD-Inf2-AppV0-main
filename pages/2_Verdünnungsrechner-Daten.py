@@ -25,7 +25,7 @@ if st.button("Zur Verdünnungsrechner-Grafik"):
 st.markdown(
     """
     <style>
-        body, .stApp {
+        .stApp, .block-container {
             background: radial-gradient(circle, #C6DE9B, #F9F9F9) !important;
         }
     </style>
