@@ -1,12 +1,6 @@
 
 import streamlit as st
 
-# ====== Start Login Block ======
-from utils.login_manager import LoginManager
-LoginManager().go_to_login('Start.py') 
-# ====== End Login Block ======
-
-
 st.title("Verdünnungsrechner")
 st.markdown("### **Berechnung**")
 st.markdown(
@@ -42,6 +36,30 @@ if berechnen:
         st.success(f"Das benötigte Endvolumen (V₂) ist: {v2:.3f} L")
     else:
         st.error("Bitte geben Sie gültige Werte ein. c₂ muss kleiner als c₁ sein.")
+
+submitted = st.button("Berechnen")
+
+def calculate_dilution(c1, v1, c2):
+    if c1 > 0 and v1 > 0 and c2 > 0 and c2 < c1:
+        v2 = (c1 * v1) / c2  # Berechnung des Zielvolumens
+        return {
+            "v2": v2,
+            "message": f"Das benötigte Endvolumen (V₂) ist: {v2:.3f} L"
+        }
+    else:
+        return {
+            "v2": None,
+            "message": "Bitte geben Sie gültige Werte ein. c₂ muss kleiner als c₁ sein."
+        }
+
+if submitted:
+    result = calculate_dilution(c1, v1, c2)
+    
+    if result["v2"] is not None:
+        st.success(result["message"])
+    else:
+        st.error(result["message"])
+
 
 import pandas as pd
 
@@ -136,6 +154,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
- from utils.data_manager import DataManager
-    DataManager().append_record(session_state_key='data_df', record_dict=result)  # update data in session state and storage
+from utils.data_manager import DataManager
+DataManager().append_record(session_state_key='data_df', record_dict=result)  # update data in session state and storage
 
