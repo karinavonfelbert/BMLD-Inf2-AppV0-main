@@ -22,14 +22,12 @@ if st.button("Zur Verdünnungsrechner-Grafik"):
 
 # Hintergrundfarbe
 
-import streamlit as st
-
 st.markdown(
     """
     <style>
-        .stApp {
-            background: radial-gradient(circle, #C6DE9B, #F9F9F9);
-        } 
+    body, .stApp {  /* ✅ Leerzeichen nach Komma hinzugefügt */
+        background: radial-gradient(circle, #C6DE9B, #F9F9F9);
+    }
     </style>
     """,
     unsafe_allow_html=True
