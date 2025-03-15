@@ -12,13 +12,6 @@ data_df = data_df.sort_values('timestamp', ascending=False)
 
 st.dataframe(data_df)
 
-if st.button("Zurück zur Startseite"):
-    st.switch_page("Start.py")
-if st.button("Zum Verdünnungsrechner"):
-    st.switch_page("pages/1_Verdünnungsrechner.py")
-if st.button("Zur Verdünnungsrechner-Grafik"):
-    st.switch_page("pages/3_Verdünnungsrechner-Grafik.py")
-
 
 # Hintergrundfarbe
 
@@ -32,3 +25,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+# Nochmals bearbeiten, da es nicht funktioniert!!!!!
