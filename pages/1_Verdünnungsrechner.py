@@ -154,6 +154,4 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-from utils.data_manager import DataManager
-DataManager().append_record(session_state_key='data_df', record_dict=result)  # update data in session state and storage
 
