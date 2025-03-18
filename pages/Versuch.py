@@ -29,6 +29,7 @@ if submitted:
     if c1 > 0 and v1 > 0 and c2 > 0 and c2 < c1:
         v2 = (c1 * v1) / c2  # Berechnung des Zielvolumens
         v_d = v2 - v1  # Berechnung des Verdünnungsvolumens
+        # Nur einmal das Ergebnis anzeigen
         st.success(f"Das benötigte Endvolumen (V2) ist: {v2:.3f} L")
         st.success(f"Das Verdünnungsvolumen (V_D) ist: {v_d:.3f} L")
     else:
