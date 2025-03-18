@@ -37,7 +37,6 @@ if berechnen:
     else:
         st.error("Bitte geben Sie gültige Werte ein. c₂ muss kleiner als c₁ sein.")
 
-berechnen = st.form_submit_button("Berechnen")
 
 
 def calculate_dilution(c1, v1, c2):
@@ -53,7 +52,7 @@ def calculate_dilution(c1, v1, c2):
             "message": "Bitte geben Sie gültige Werte ein. c₂ muss kleiner als c₁ sein."
         }
 
-if submitted:
+if berechnen:
     result = calculate_dilution(c1, v1, c2)
     
     if result["v2"] is not None:
