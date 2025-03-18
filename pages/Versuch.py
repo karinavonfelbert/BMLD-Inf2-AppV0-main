@@ -34,3 +34,26 @@ if submitted:
         st.success(f"Das Verdünnungsvolumen (V_D) ist: {v_d:.3f} L")
     else:
         st.error("Bitte geben Sie gültige Werte ein. c2 muss kleiner als c1 sein und alle Werte müssen größer als 0 sein.")
+
+# Hintergrundfarbe
+
+st.markdown(
+    """
+    <style>
+        body, .stApp {
+            background: radial-gradient(circle, #C6DE9B, #F9F9F9) !important;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Schriftfarbe
+
+st.markdown("""
+    <style>
+        h1, h2, h3, h4, h5, h6, p, div {
+            color: black !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
