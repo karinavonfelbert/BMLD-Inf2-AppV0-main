@@ -33,11 +33,12 @@ def berechne_verdünnung(c1, v1, c2):
             "message": "Bitte geben Sie gültige Werte ein. c₂ muss kleiner als c₁ sein."
         }
 
-# Berechnung ausführen
+result = None  # Initialisierung, damit es außerhalb des Buttons-Scopes existiert
+
 if st.button("Berechnen"):
     result = berechne_verdünnung(c1, v1, c2)
-
-    if result["V2"] is not None:
+    
+    if result and "V2" in result:
         result_dict = {
             'timestamp': ch_now(),
             'Eingangskonzentration': c1,
@@ -45,10 +46,10 @@ if st.button("Berechnen"):
             'Zielkonzentration': c2,
             'Endvolumen (V2)': result["V2"]
         }
-        DataManager().append_record(session_state_key='data_df', record_dict=result_dict)
-        st.dataframe(st.session_state['data_df'], width=500, height=200)
 
-        st.success(result["message"])
+        from utils.data_manager import DataManager
+        DataManager().append_record(session_state_key='data_df', record_dict=result)
+
+        st.success(result.get("message", "Berechnung erfolgreich!"))
     else:
-        st.error(result["message"])
-
+        st.error(result.get("message", "Fehler bei der Berechnung"))
