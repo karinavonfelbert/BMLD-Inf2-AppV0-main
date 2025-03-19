@@ -1,3 +1,6 @@
+#Login
+from utils.login_manager import LoginManager
+LoginManager().go_to_login('Start.py') 
 
 import streamlit as st
 
@@ -74,6 +77,8 @@ legende_data = {
     ]
 }
 
+# Legende als Dataframe
+
 df_legende = pd.DataFrame(legende_data)
 
 st.markdown("### **Legende**")
@@ -102,6 +107,9 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+
+# Hintergrundfarbe
 
 st.table(df_legende)
 
@@ -153,5 +161,4 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
-
 
