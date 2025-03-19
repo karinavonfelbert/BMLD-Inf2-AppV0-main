@@ -47,8 +47,5 @@ if st.button("Berechnen"):
             'Endvolumen (V2)': result["V2"]
         }
 
-        from utils.data_manager import DataManager
-        DataManager().append_record(session_state_key='data_df', record_dict=result)
-        st.success(result.get("message", "Berechnung erfolgreich!"))
-    else:
-        st.error(result.get("message", "Fehler bei der Berechnung"))
+from utils.data_manager import DataManager
+DataManager().append_record(session_state_key='data_df', record_dict=result)
