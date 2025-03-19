@@ -39,29 +39,6 @@ if submitted:
         st.error("Bitte geben Sie gültige Werte ein. c2 muss kleiner als c1 sein und alle Werte müssen größer als 0 sein.")
 
 
-
-# Test
-import streamlit as st
-from utils import helpers  # Falls du helpers für Zeitstempel oder andere Dinge verwendest
-from utils.data_manager import DataManager  # Importiere den DataManager
-
-# Funktion zur Berechnung des Verdünnungsvolumens
-def calculate_dilution(c1, v1, c2):
-    if c1 > 0 and v1 > 0 and c2 > 0 and c2 < c1:
-        v2 = (c1 * v1) / c2  # Berechnung des Zielvolumens
-        v_d = v2 - v1  # Berechnung des Verdünnungsvolumens
-        return {
-            "v2": v2,
-            "v_d": v_d,
-            "message": f"Das benötigte Endvolumen (V2) ist: {v2:.3f} L. Das Verdünnungsvolumen (V_D) ist: {v_d:.3f} L"
-        }
-    else:
-        return {
-            "v2": None,
-            "v_d": None,
-            "message": "Bitte geben Sie gültige Werte ein. c2 muss kleiner als c1 sein und alle Werte müssen größer als 0 sein."
-        }
-
 # Streamlit Interface
 st.title("Verdünnungsrechner")
 st.markdown("### **Berechnung der Verdünnung**")
