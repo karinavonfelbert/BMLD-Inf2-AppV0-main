@@ -46,6 +46,5 @@ if st.button("Berechnen"):
             'Zielkonzentration': c2,
             'Endvolumen (V2)': result["V2"]
         }
-
-from utils.data_manager import DataManager
-DataManager().append_record(session_state_key='data_df', record_dict=result)
+        DataManager().append_record(session_state_key='data_df', record_dict=result_dict)
+        st.dataframe(st.session_state['data_df'], width=500, height=200)
