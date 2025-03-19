@@ -6,6 +6,9 @@ import streamlit as st
 
 st.title("Verdünnungsrechner")
 st.markdown("### **Berechnung**")
+
+# Beschreibung wie berechnet wird
+
 st.markdown(
     """
     Die Berechnung basiert auf der Verdünnungsformel:
@@ -25,6 +28,8 @@ st.markdown(
 )
 st.latex(r"V_D = V_2 - V_1")
 
+# Hier startet die eigentliche App
+
 st.subheader("Hier finden Sie den Verdünnungsrechner.")
 
 with st.form("verdünnung_formular"):
@@ -39,8 +44,6 @@ if berechnen:
         st.success(f"Das benötigte Endvolumen (V₂) ist: {v2:.3f} L")
     else:
         st.error("Bitte geben Sie gültige Werte ein. c₂ muss kleiner als c₁ sein.")
-
-
 
 def calculate_dilution(c1, v1, c2):
     if c1 > 0 and v1 > 0 and c2 > 0 and c2 < c1:
