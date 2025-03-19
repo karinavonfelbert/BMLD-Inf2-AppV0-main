@@ -48,3 +48,14 @@ if st.button("Berechnen"):
         }
         DataManager().append_record(session_state_key='data_df', record_dict=result_dict)
         st.dataframe(st.session_state['data_df'], width=500, height=200)
+
+        from utils.data_manager import DataManager
+
+# Überprüfen, ob DataManager existiert
+print("Typ von DataManager:", type(DataManager))
+print("Verfügbare Methoden in DataManager:", dir(DataManager))
+
+# Falls DataManager eine Klasse ist, ein Objekt erzeugen
+dm = DataManager()
+print("Typ von dm:", type(dm))
+print("Verfügbare Methoden in dm:", dir(dm))
