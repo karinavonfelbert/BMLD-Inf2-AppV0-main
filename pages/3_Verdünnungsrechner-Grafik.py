@@ -19,7 +19,7 @@ st.line_chart(data=data_df.set_index('timestamp')['Eingangskonzentration'],
                 use_container_width=True)
 st.caption('Eingangskonzentration (c₁) über Zeit (mol/L)')
 
-st.line_chart(data=data_df.set_index('timestamp')['mol/L'],
+st.line_chart(data=data_df.set_index('timestamp')['timestamp'],
                 use_container_width=True)
 st.caption('Eingangsvolumen (V₁) über Zeit (L)')
 
