@@ -19,16 +19,17 @@ st.line_chart(data=data_df.set_index('timestamp')['Eingangskonzentration'],
                 use_container_width=True)
 st.caption('Eingangskonzentration (c₁) über Zeit (mol/L)')
 
-st.caption('Eingangsvolumen (V₁) über Zeit (L)')
-
 st.line_chart(data=data_df.set_index('timestamp')['Eingangsvolumen'],
                 use_container_width=True)
-st.caption('Zielkonzentration (c₂) über Zeit (mol/L)')
+st.caption('Eingangsvolumen (V₁) über Zeit (L)')
 
 st.line_chart(data=data_df.set_index('timestamp')['Zielkonzentration'],
                 use_container_width=True)
+st.caption('Zielkonzentration (c₂) über Zeit (mol/L)')
+
 st.line_chart(data=data_df.set_index('timestamp')['Endvolumen'],
                 use_container_width=True)
+st.caption('Endvolumen (V2) über Zeit (mol/L)')
 
 # Hintergrundfarbe
 
