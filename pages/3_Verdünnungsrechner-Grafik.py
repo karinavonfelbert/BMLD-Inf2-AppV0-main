@@ -6,37 +6,31 @@ import pandas as pd
 LoginManager().go_to_login('Start.py') 
 # ====== End Login Block ======
 
-
+import streamlit as st
 st.title("Grafik des Verdünnungsrechners")
-
 st.write("Hier sehen Sie die Grafik des Verdünnungsrechners.")
 
-# Load data from session state
-import pandas as pd
-import streamlit as st
-
-data_df = st.session_state.get('data_df', pd.DataFrame())
-
+data_df = st.session_state['data_df']
 if data_df.empty:
-    st.info('Keine Verdünnungsrechner-Daten vorhanden. Bitte geben Sie Ihre Daten auf der vorherigen Seite ein.')
+    st.info('Keine Verdünnungs-Daten vorhanden. Berechnen Sie Ihre Verdünnung auf der Startseite.')
     st.stop()
 
-# Plot concentration over time
-st.line_chart(data=data_df.set_index('timestamp')['concentration'], 
-              use_container_width=True)
-st.caption('Konzentration über Zeit')
+st.line_chart(data=data_df.set_index('timestamp')['weight'], 
+                use_container_width=True)
+st.caption('Eingangskonzentration (c₁) über Zeit (mol/L)')
 
-# Plot volume over time
-st.line_chart(data=data_df.set_index('timestamp')['volume'],
-              use_container_width=True)
-st.caption('Volumen über Zeit')
+st.line_chart(data=data_df.set_index('timestamp')['height'],
+                use_container_width=True)
+st.caption('Eingangsvolumen (V₁) über Zeit (L)')
 
-# Plot dilution factor over time
-st.line_chart(data=data_df.set_index('timestamp')['dilution_factor'],
-              use_container_width=True)
-st.caption('Verdünnungsfaktor über Zeit')
+st.line_chart(data=data_df.set_index('timestamp')['bmi'],
+                use_container_width=True)
+st.caption('Zielkonzentration (c₂) über Zeit (mol/L)')
 
-
+st.line_chart(data=data_df.set_index('timestamp')['bmi'],
+                use_container_width=True)
+st.line_chart(data=data_df.set_index('timestamp')['bmi'],
+                use_container_width=True)
 
 # Hintergrundfarbe
 
