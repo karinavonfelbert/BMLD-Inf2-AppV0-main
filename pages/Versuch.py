@@ -61,6 +61,19 @@ if st.button("Berechnen"):
     ]
 }
 
+import pandas as pd
+
+legende_data = {
+    "Symbol": ["c₁", "V₁", "c₂", "V₂", "Vd"],
+    "Bedeutung": [
+        "Eingangskonzentration (mol/L) – Konzentration der Stammlösung vor der Verdünnung",
+        "Eingangsvolumen (L) – Volumen der Stammlösung",
+        "Zielkonzentration (mol/L) – Gewünschte Endkonzentration nach der Verdünnung",
+        "Endvolumen (L) – Endvolumen der Lösung nach der Verdünnung",
+        "Verdünnungsmittelvolumen (L) – Benötigte Menge des Verdünnungsmittels (V₂ - V₁)"
+    ]
+}
+
 # Legende als Dataframe
 
 df_legende = pd.DataFrame(legende_data)
