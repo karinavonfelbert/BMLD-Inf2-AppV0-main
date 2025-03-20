@@ -20,9 +20,6 @@ if data_df.empty:
     st.info("❌ Keine Verdünnungs-Daten vorhanden. Berechnen Sie Ihre Verdünnung auf der vorherigen Seite.")
     st.stop()
 
-# **🔎 Debugging: Zeige die tatsächlichen Spaltennamen**
-st.write("🔎 Verfügbare Spalten:", data_df.columns.tolist())
-
 # **🔹 Sicherstellen, dass `timestamp` als Datetime formatiert ist**
 if "timestamp" in data_df.columns:
     data_df["timestamp"] = pd.to_datetime(data_df["timestamp"], errors='coerce')  # Falls fehlerhafte Einträge existieren
