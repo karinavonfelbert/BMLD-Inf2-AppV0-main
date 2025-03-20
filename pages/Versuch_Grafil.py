@@ -3,6 +3,33 @@ import pandas as pd
 
 st.title("Verdünnungsrechner Verlauf")
 
+import pandas as pd
+import streamlit as st
+
+data_df = st.session_state.get('data_df', pd.DataFrame())
+
+if data_df.empty:
+    st.info('Keine Verdünnungsrechner-Daten vorhanden. Bitte geben Sie Ihre Daten auf der vorherigen Seite ein.')
+    st.stop()
+
+# Plot concentration over time
+st.line_chart(data=data_df.set_index('timestamp')['concentration'], 
+              use_container_width=True)
+st.caption('Konzentration über Zeit')
+
+# Plot volume over time
+st.line_chart(data=data_df.set_index('timestamp')['volume'],
+              use_container_width=True)
+st.caption('Volumen über Zeit')
+
+# Plot dilution factor over time
+st.line_chart(data=data_df.set_index('timestamp')['dilution_factor'],
+              use_container_width=True)
+st.caption('Verdünnungsfaktor über Zeit')
+
+
+
+
 # Sicherstellen, dass die Daten existieren
 if "data_df" not in st.session_state or st.session_state["data_df"].empty:
     st.info("Keine gespeicherten Verdünnungsdaten vorhanden. Gehen Sie zur Berechnungsseite, um Werte einzugeben.")
