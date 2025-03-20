@@ -15,21 +15,21 @@ if data_df.empty:
     st.info('Keine Verdünnungs-Daten vorhanden. Berechnen Sie Ihre Verdünnung auf der Startseite.')
     st.stop()
 
-st.line_chart(data=data_df.set_index('timestamp')['weight'], 
+st.line_chart(data=data_df.set_index('timestamp')['c1'], 
                 use_container_width=True)
 st.caption('Eingangskonzentration (c₁) über Zeit (mol/L)')
 
-st.line_chart(data=data_df.set_index('timestamp')['height'],
+st.line_chart(data=data_df.set_index('timestamp')['mol/L'],
                 use_container_width=True)
 st.caption('Eingangsvolumen (V₁) über Zeit (L)')
 
-st.line_chart(data=data_df.set_index('timestamp')['bmi'],
+st.line_chart(data=data_df.set_index('timestamp')['v1'],
                 use_container_width=True)
 st.caption('Zielkonzentration (c₂) über Zeit (mol/L)')
 
-st.line_chart(data=data_df.set_index('timestamp')['bmi'],
+st.line_chart(data=data_df.set_index('timestamp')['c2'],
                 use_container_width=True)
-st.line_chart(data=data_df.set_index('timestamp')['bmi'],
+st.line_chart(data=data_df.set_index('timestamp')['V2'],
                 use_container_width=True)
 
 # Hintergrundfarbe
