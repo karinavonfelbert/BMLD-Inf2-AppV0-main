@@ -1,71 +1,53 @@
-#Login
+# ====== Start Login Block ======
 from utils.login_manager import LoginManager
+from utils.data_manager import DataManager
+from utils.helpers import ch_now
 LoginManager().go_to_login('Start.py') 
+
+# ====== End Login Block ======
+
+# ------------------------------------------------------------
+# Here starts the actual app, which was developed previously
 
 import streamlit as st
 
-st.title("Verdünnungsrechner")
-st.markdown("### **Berechnung**")
+# Titel der App
+st.title('Verdünnungsrechner')
 
-# Beschreibung wie berechnet wird
+# Eingabefelder für die Berechnung
+c1 = st.number_input("Eingangskonzentration (c₁) in mol/L", min_value=0.0, step=0.1)
+v1 = st.number_input("Eingangsvolumen (V₁) in L", min_value=0.0, step=0.1)
+c2 = st.number_input("Zielkonzentration (c₂) in mol/L", min_value=0.0, step=0.1)
 
-st.markdown(
-    """
-    Die Berechnung basiert auf der Verdünnungsformel:
-    """
-)
-st.latex(r"c_1 \cdot V_1 = c_2 \cdot V_2")
-st.markdown(
-    """
-    Wobei das Endvolumen \(V2\) durch Umstellen der Formel bestimmt wird als:
-    """
-)
-st.latex(r"V_2 = \frac{c_1 \cdot V_1}{c_2}")
-st.markdown(
-    """
-    Anschließend wird das benötigte Verdünnungsvolumen berechnet:
-    """
-)
-st.latex(r"V_D = V_2 - V_1")
-
-# Hier startet die eigentliche App
-
-st.subheader("Hier finden Sie den Verdünnungsrechner.")
-
-with st.form("verdünnung_formular"):
-    c1 = st.number_input("Eingangskonzentration (c₁) in mol/L", min_value=0.0, step=0.1)
-    v1 = st.number_input("Eingangsvolumen (V₁) in L", min_value=0.0, step=0.1)
-    c2 = st.number_input("Zielkonzentration (c₂) in mol/L", min_value=0.0, step=0.1)
-    berechnen = st.form_submit_button("Berechnen")
-
-if berechnen:
+# Funktion zur Berechnung des Verdünnungsvolumens
+def berechne_verdünnung(c1, v1, c2):
     if c1 > 0 and v1 > 0 and c2 > 0 and c2 < c1:
-        v2 = (c1 * v1) / c2  # Berechnung des Zielvolumens
-        st.success(f"Das benötigte Endvolumen (V₂) ist: {v2:.3f} L")
-    else:
-        st.error("Bitte geben Sie gültige Werte ein. c₂ muss kleiner als c₁ sein.")
-
-def calculate_dilution(c1, v1, c2):
-    if c1 > 0 and v1 > 0 and c2 > 0 and c2 < c1:
-        v2 = (c1 * v1) / c2  # Berechnung des Zielvolumens
+        v2 = (c1 * v1) / c2
         return {
-            "v2": v2,
+            "V2": v2,
             "message": f"Das benötigte Endvolumen (V₂) ist: {v2:.3f} L"
         }
     else:
         return {
-            "v2": None,
+            "V2": None,
             "message": "Bitte geben Sie gültige Werte ein. c₂ muss kleiner als c₁ sein."
         }
 
-if berechnen:
-    result = calculate_dilution(c1, v1, c2)
-    
-    if result["v2"] is not None:
-        st.success(result["message"])
-    else:
-        st.error(result["message"])
+result = None  # Initialisierung, damit es außerhalb des Buttons-Scopes existiert
 
+if st.button("Berechnen"):
+    result = berechne_verdünnung(c1, v1, c2)
+    
+    if result and "V2" in result:
+        result_dict = {
+            'timestamp': ch_now(),
+            'Eingangskonzentration': c1,
+            'Eingangsvolumen': v1,
+            'Zielkonzentration': c2,
+            'Endvolumen (V2)': result["V2"]
+        }
+        DataManager().append_record(session_state_key='data_df', record_dict=result_dict)
+        st.dataframe(st.session_state['data_df'], width=500, height=200)
 
 import pandas as pd
 
@@ -81,7 +63,6 @@ legende_data = {
 }
 
 # Legende als Dataframe
-
 df_legende = pd.DataFrame(legende_data)
 
 st.markdown("### **Legende**")
@@ -164,4 +145,5 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
+
 
