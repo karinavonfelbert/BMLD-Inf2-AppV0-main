@@ -13,6 +13,8 @@ st.write("Hier sehen Sie die Grafik des Verdünnungsrechners.")
 
 # Load data from session state
 import pandas as pd
+import streamlit as st
+
 data_df = st.session_state.get('data_df', pd.DataFrame())
 
 if data_df.empty:
