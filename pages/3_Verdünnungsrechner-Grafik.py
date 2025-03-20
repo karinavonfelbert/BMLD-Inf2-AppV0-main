@@ -14,6 +14,21 @@ data_df = st.session_state['data_df']
 if data_df.empty:
     st.info('Keine Verdünnungs-Daten vorhanden. Berechnen Sie Ihre Verdünnung auf der Startseite.')
     st.stop()
+    
+st.write("🔎 Verfügbare Spalten:", data_df.columns.tolist())
+
+# Falls eine Spalte fehlt, Fehler anzeigen
+required_columns = ["timestamp", "c1", "v1", "c2", "V2"]
+missing_columns = [col for col in required_columns if col not in data_df.columns]
+
+if missing_columns:
+    st.error(f"⚠️ Fehlende Spalten: {', '.join(missing_columns)}")
+    st.stop()
+
+# Daten nach Zeitachse indexieren
+data_df["timestamp"] = pd.to_datetime(data_df["timestamp"])  # Falls nötig
+data_df = data_df.set_index("timestamp")
+
 
 st.line_chart(data=data_df.set_index('timestamp')['c1'], 
                 use_container_width=True)
