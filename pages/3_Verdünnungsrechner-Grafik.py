@@ -9,44 +9,41 @@ LoginManager().go_to_login('Start.py')
 import streamlit as st
 import pandas as pd
 
-st.title("Grafik des Verdünnungsrechners")
+st.title("📊 Grafik des Verdünnungsrechners")
 st.write("Hier sehen Sie die Grafik des Verdünnungsrechners.")
 
-# Lade gespeicherte Daten aus `session_state`
+# **Lade gespeicherte Daten aus `session_state`**
 data_df = st.session_state.get("data_df", pd.DataFrame())
 
-# Prüfen, ob Daten vorhanden sind
+# **Prüfen, ob Daten vorhanden sind**
 if data_df.empty:
-    st.info("Keine Verdünnungs-Daten vorhanden. Berechnen Sie Ihre Verdünnung auf der vorherigen Seite.")
+    st.info("❌ Keine Verdünnungs-Daten vorhanden. Berechnen Sie Ihre Verdünnung auf der vorherigen Seite.")
     st.stop()
 
-# 🔎 Debugging: Spaltennamen anzeigen
+# **🔎 Debugging: Zeige die tatsächlichen Spaltennamen**
 st.write("🔎 Verfügbare Spalten:", data_df.columns.tolist())
 
-# 🔹 Sicherstellen, dass `timestamp` als Datetime formatiert ist
+# **🔹 Sicherstellen, dass `timestamp` als Datetime formatiert ist**
 if "timestamp" in data_df.columns:
-    data_df["timestamp"] = pd.to_datetime(data_df["timestamp"])  
-    data_df = data_df.set_index("timestamp")  # Zeit als Index setzen
+    data_df["timestamp"] = pd.to_datetime(data_df["timestamp"], errors='coerce')  # Falls fehlerhafte Einträge existieren
+    data_df = data_df.dropna(subset=["timestamp"])  # Entferne ungültige Zeilen
+    data_df = data_df.set_index("timestamp")  # Setze `timestamp` als Index
 else:
     st.error("⚠️ 'timestamp' fehlt in den Daten!")
     st.stop()
 
-# 🔹 Line Charts mit den korrekten Spaltennamen
+# **🔹 Line Charts mit den korrekten Spaltennamen**
 st.line_chart(data=data_df["Eingangskonzentration"], use_container_width=True)
-st.caption("Eingangskonzentration (c₁) über Zeit (mol/L)")
+st.caption("🔬 Eingangskonzentration (c₁) über Zeit (mol/L)")
 
 st.line_chart(data=data_df["Eingangsvolumen"], use_container_width=True)
-st.caption("Eingangsvolumen (V₁) über Zeit (L)")
+st.caption("📦 Eingangsvolumen (V₁) über Zeit (L)")
 
 st.line_chart(data=data_df["Zielkonzentration"], use_container_width=True)
-st.caption("Zielkonzentration (c₂) über Zeit (mol/L)")
+st.caption("🧪 Zielkonzentration (c₂) über Zeit (mol/L)")
 
 st.line_chart(data=data_df["Endvolumen (V2)"], use_container_width=True)
-st.caption("Endvolumen (V₂) über Zeit (L)")
-
-# Optional: Zeige die Daten als Tabelle
-st.subheader("📋 Gespeicherte Verdünnungsdaten")
-st.dataframe(data_df)
+st.caption("📊 Endvolumen (V₂) über Zeit (L)")
 
 # Hintergrundfarbe
 
