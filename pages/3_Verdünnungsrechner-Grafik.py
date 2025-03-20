@@ -7,29 +7,46 @@ LoginManager().go_to_login('Start.py')
 # ====== End Login Block ======
 
 import streamlit as st
+import pandas as pd
+
 st.title("Grafik des Verdünnungsrechners")
 st.write("Hier sehen Sie die Grafik des Verdünnungsrechners.")
 
-data_df = st.session_state['data_df']
+# Lade gespeicherte Daten aus `session_state`
+data_df = st.session_state.get("data_df", pd.DataFrame())
+
+# Prüfen, ob Daten vorhanden sind
 if data_df.empty:
-    st.info('Keine Verdünnungs-Daten vorhanden. Berechnen Sie Ihre Verdünnung auf der Startseite.')
+    st.info("Keine Verdünnungs-Daten vorhanden. Berechnen Sie Ihre Verdünnung auf der vorherigen Seite.")
     st.stop()
 
-st.line_chart(data=data_df.set_index('timestamp')['Eingangskonzentration'], 
-                use_container_width=True)
-st.caption('Eingangskonzentration (c₁) über Zeit (mol/L)')
+# 🔎 Debugging: Spaltennamen anzeigen
+st.write("🔎 Verfügbare Spalten:", data_df.columns.tolist())
 
-st.line_chart(data=data_df.set_index('timestamp')['Eingangsvolumen'],
-                use_container_width=True)
-st.caption('Eingangsvolumen (V₁) über Zeit (L)')
+# 🔹 Sicherstellen, dass `timestamp` als Datetime formatiert ist
+if "timestamp" in data_df.columns:
+    data_df["timestamp"] = pd.to_datetime(data_df["timestamp"])  
+    data_df = data_df.set_index("timestamp")  # Zeit als Index setzen
+else:
+    st.error("⚠️ 'timestamp' fehlt in den Daten!")
+    st.stop()
 
-st.line_chart(data=data_df.set_index('timestamp')['Zielkonzentration'],
-                use_container_width=True)
-st.caption('Zielkonzentration (c₂) über Zeit (mol/L)')
+# 🔹 Line Charts mit den korrekten Spaltennamen
+st.line_chart(data=data_df["Eingangskonzentration"], use_container_width=True)
+st.caption("Eingangskonzentration (c₁) über Zeit (mol/L)")
 
-st.line_chart(data=data_df.set_index('timestamp')['Endvolumen'],
-                use_container_width=True)
-st.caption('Endvolumen (V2) über Zeit (mol/L)')
+st.line_chart(data=data_df["Eingangsvolumen"], use_container_width=True)
+st.caption("Eingangsvolumen (V₁) über Zeit (L)")
+
+st.line_chart(data=data_df["Zielkonzentration"], use_container_width=True)
+st.caption("Zielkonzentration (c₂) über Zeit (mol/L)")
+
+st.line_chart(data=data_df["Endvolumen (V2)"], use_container_width=True)
+st.caption("Endvolumen (V₂) über Zeit (L)")
+
+# Optional: Zeige die Daten als Tabelle
+st.subheader("📋 Gespeicherte Verdünnungsdaten")
+st.dataframe(data_df)
 
 # Hintergrundfarbe
 
