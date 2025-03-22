@@ -12,24 +12,20 @@ import pandas as pd
 st.title("📊 Grafik des Verdünnungsrechners")
 st.write("Hier sehen Sie die Grafik des Verdünnungsrechners.")
 
-# **Lade gespeicherte Daten aus `session_state`**
 data_df = st.session_state.get("data_df", pd.DataFrame())
 
-# **Prüfen, ob Daten vorhanden sind**
 if data_df.empty:
     st.info("❌ Keine Verdünnungs-Daten vorhanden. Berechnen Sie Ihre Verdünnung auf der vorherigen Seite.")
     st.stop()
 
-# **🔹 Sicherstellen, dass `timestamp` als Datetime formatiert ist**
 if "timestamp" in data_df.columns:
-    data_df["timestamp"] = pd.to_datetime(data_df["timestamp"], errors='coerce')  # Falls fehlerhafte Einträge existieren
-    data_df = data_df.dropna(subset=["timestamp"])  # Entferne ungültige Zeilen
-    data_df = data_df.set_index("timestamp")  # Setze `timestamp` als Index
+    data_df["timestamp"] = pd.to_datetime(data_df["timestamp"], errors='coerce')  
+    data_df = data_df.dropna(subset=["timestamp"])  
+    data_df = data_df.set_index("timestamp")  
 else:
     st.error("⚠️ 'timestamp' fehlt in den Daten!")
     st.stop()
 
-# **🔹 Line Charts mit den korrekten Spaltennamen**
 st.line_chart(data=data_df["Eingangskonzentration"], use_container_width=True)
 st.caption("🔬 Eingangskonzentration (c₁) über Zeit (mol/L)")
 
